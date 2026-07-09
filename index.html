@@ -45,7 +45,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
         }
@@ -56,14 +56,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 4px;
         }
 
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--rosa-principal);
-            text-decoration: none;
             letter-spacing: 1px;
             font-weight: 600;
         }
@@ -88,7 +100,7 @@
 
         /* Seção Hero / Início */
         .hero {
-            padding: 160px 20px 100px 20px;
+            padding: 180px 20px 120px 20px;
             background: linear-gradient(135deg, var(--branco) 0%, var(--rosa-suave) 100%);
             text-align: center;
             position: relative;
@@ -176,17 +188,12 @@
             text-align: justify;
         }
 
-        .about-img-placeholder {
+        .about-img {
             width: 100%;
-            height: 450px;
-            background-color: var(--cinza-claro);
+            height: 500px;
+            object-fit: cover;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed var(--rosa-principal);
-            color: #888;
-            /* Quando tiver a foto oficial no computador: background: url('marcella-perfil.jpg') center/cover; */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         /* Especialidades e Mentoria */
@@ -237,16 +244,16 @@
         }
 
         .gallery-item {
-            height: 250px;
-            background-color: var(--cinza-claro);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #ddd;
-            color: #999;
-            font-size: 0.85rem;
-            /* O espaço abaixo está pronto para receber as imagens que você enviou */
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
         }
 
         /* Contato e Localização */
@@ -272,6 +279,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             color: var(--rosa-principal);
+            margin-bottom: 5px;
         }
 
         .contact-item p {
@@ -279,15 +287,19 @@
             color: var(--grafite);
         }
 
-        .map-placeholder {
+        /* Ajuste do Iframe do Mapa */
+        .map-container {
             width: 100%;
-            height: 300px;
-            background-color: var(--cinza-claro);
+            height: 350px;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Rodapé */
@@ -321,8 +333,8 @@
             .about-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .about-img-placeholder {
-                height: 300px;
+            .about-img {
+                height: 350px;
             }
         }
     </style>
@@ -332,7 +344,10 @@
     <!-- Menu de Navegação -->
     <header>
         <nav class="nav-container">
-            <a href="#inicio" class="logo-text">DRA. MARCELLA ROCHA</a>
+            <a href="#inicio" class="logo-container">
+                <img src="imagens/logo.jpeg" alt="Logo Dra Marcella Rocha" class="logo-img">
+                <span class="logo-text">DRA. MARCELLA ROCHA</span>
+            </a>
             <ul class="nav-menu">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Quem Somos</a></li>
@@ -352,7 +367,7 @@
         </div>
     </section>
 
-    <!-- Seção Quem Somos -->
+    <!-- Seção Quem Somos / Institucional -->
     <section class="section" id="sobre">
         <h2 class="section-title">Institucional</h2>
         <div class="about-grid">
@@ -362,10 +377,7 @@
                 <p>Seu espaço de atendimento foi milimetricamente planejado para oferecer uma experiência acolhedora, combinando elegância arquitetônica com os mais modernos recursos tecnológicos da odontologia clínica e cirúrgica.</p>
                 <p>Além de sua forte atuação clínica, a Dra. Marcella dedica-se à docência, moldando o futuro da profissão ao ministrar cursos de mentoria e treinamento para outros profissionais que buscam atingir a alta performance técnica.</p>
             </div>
-            <!-- Espaço reservado para a Imagem de Perfil -->
-            <div class="about-img-placeholder">
-                <p>[ Foto Dra. Marcella ]</p>
-            </div>
+            <img src="imagens/perfil.jpeg" alt="Dra. Marcella Rocha" class="about-img">
         </div>
     </section>
 
@@ -408,10 +420,10 @@
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title">O Consultório</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">[ Foto 1 - Recepção Sala 304 ]</div>
-                <div class="gallery-item">[ Foto 2 - Sala de Atendimento ]</div>
-                <div class="gallery-item">[ Foto 3 - Detalhes em Mármore ]</div>
-                <div class="gallery-item">[ Foto 4 - Tecnologia e Conforto ]</div>
+                <img src="imagens/consultorio1.jpeg" alt="Recepção Sala 304" class="gallery-item">
+                <img src="imagens/consultorio2.jpeg" alt="Sala de Atendimento" class="gallery-item">
+                <img src="imagens/consultorio3.jpeg" alt="Detalhes e Design" class="gallery-item">
+                <img src="imagens/consultorio4.jpeg" alt="Ambiente Clínico" class="gallery-item">
             </div>
         </div>
     </section>
@@ -437,9 +449,9 @@
                 <br>
                 <a href="https://wa.me/5551996602778" target="_blank" class="btn">Falar no WhatsApp</a>
             </div>
-            <!-- Espaço para o mapa do Google Maps -->
-            <div class="map-placeholder">
-                <p>[ Mapa Google Maps - Rua General Osório, 336 ]</p>
+            <!-- Mapa Interativo Real do Google Maps -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.137837012574!2d-49.7345638!3d-29.3371191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519323eb7254593%3A0x67ee1c0bb0dfdfc7!2sR.%20Gen.%20Os%C3%B3rio%2C%20336%20-%20Torres%2C%20RS%2C%2095560-000!5e0!3m2!1spt-BR!2sbr!4v1719521300000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
