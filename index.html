@@ -3,9 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. Marcella Rocha</title>
+    <title>Dra. Marcella Rocha | Cirurgiã-Dentista</title>
+    <!-- Google Fonts para Elegância -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis de Cores Baseadas no Consultório e Logo */
+        :root {
+            --rosa-principal: #E3A1B4;
+            --rosa-suave: #F9EFF2;
+            --dourado: #D4AF37;
+            --grafite: #333333;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--grafite);
+            background-color: var(--branco);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Menu de Navegação */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--rosa-principal);
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--grafite);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--rosa-principal);
+        }
+
+        /* Seção Hero / Início */
+        .hero {
+            padding: 160px 20px 100px 20px;
+            background: linear-gradient(135deg, var(--branco) 0%, var(--rosa-suave) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--grafite);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--rosa-principal);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(227, 161, 180, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #d28ba0;
+        }
+
+        /* Container Geral de Seções */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--rosa-principal);
+        }
+
+        /* Quem Somos / Institucional */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--rosa-principal);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .about-img-placeholder {
+            width: 100%;
+            height: 450px;
+            background-color: var(--cinza-claro);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--rosa-principal);
+            color: #888;
+            /* Quando tiver a foto oficial no computador: background: url('marcella-perfil.jpg') center/cover; */
+        }
+
+        /* Especialidades e Mentoria */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--branco);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--rosa-principal);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--grafite);
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Mentoria Destaque */
+        .mentorship-banner {
+            background-color: var(--rosa-suave);
+            padding: 5px;
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        /* Galeria do Consultório */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background-color: var(--cinza-claro);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            color: #999;
+            font-size: 0.85rem;
+            /* O espaço abaixo está pronto para receber as imagens que você enviou */
+        }
+
+        /* Contato e Localização */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item span {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--rosa-principal);
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            color: var(--grafite);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: var(--cinza-claro);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--grafite);
+            color: var(--branco);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsividade para telas menores (Celulares) */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-menu {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-img-placeholder {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Site da Dra. Marcella Rocha em Construção</h1>
+
+    <!-- Menu de Navegação -->
+    <header>
+        <nav class="nav-container">
+            <a href="#inicio" class="logo-text">DRA. MARCELLA ROCHA</a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Quem Somos</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#mentoria">Mentoria</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Hero / Início -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Sorrisos construídos com excelência e precisão científica.</h1>
+            <p>Atendimento odontológico de alto padrão em Torres/RS, focado em reabilitação oral e procedimentos cirúrgicos avançados.</p>
+            <a href="https://wa.me/5551996602778" target="_blank" class="btn">Agendar uma Consulta</a>
+        </div>
+    </section>
+
+    <!-- Seção Quem Somos -->
+    <section class="section" id="sobre">
+        <h2 class="section-title">Institucional</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Dra. Marcella Rocha</h3>
+                <p>Com uma trajetória pautada pela excelência e pelo aprimoramento contínuo, a Dra. Marcella Rocha atua como Cirurgiã-Dentista dedicada a transformar vidas por meio da saúde e da estética bucal.</p>
+                <p>Seu espaço de atendimento foi milimetricamente planejado para oferecer uma experiência acolhedora, combinando elegância arquitetônica com os mais modernos recursos tecnológicos da odontologia clínica e cirúrgica.</p>
+                <p>Além de sua forte atuação clínica, a Dra. Marcella dedica-se à docência, moldando o futuro da profissão ao ministrar cursos de mentoria e treinamento para outros profissionais que buscam atingir a alta performance técnica.</p>
+            </div>
+            <!-- Espaço reservado para a Imagem de Perfil -->
+            <div class="about-img-placeholder">
+                <p>[ Foto Dra. Marcella ]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Especialidades -->
+    <section class="section" id="especialidades" style="background-color: var(--cinza-claro); max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Especialidades Clínicas</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Cirurgia Oral Menor</h3>
+                    <p>Procedimentos cirúrgicos de precisão realizados em ambiente ambulatorial seguro, englobando remoções de elementos inclusos, correções teciduais e preparos pré-protéticos com o máximo de conforto pós-operatório.</p>
+                </div>
+                <div class="card">
+                    <h3>Implantodontia</h3>
+                    <p>Reabilitação oral avançada por meio de implantes osseointegrados, devolvendo de maneira definitiva a função mastigatória, a estabilidade e a estética natural do sorriso.</p>
+                </div>
+                <div class="card">
+                    <h3>Clínica Geral</h3>
+                    <p>Acompanhamento preventivo integral, diagnósticos minuciosos e tratamentos restauradores contínuos para a manutenção da saúde e do bem-estar bucal de longo prazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Mentoria -->
+    <section class="section" id="mentoria">
+        <h2 class="section-title">Docência & Mentoria</h2>
+        <div class="mentorship-banner">
+            <div class="card" style="border-top: 4px solid var(--dourado);">
+                <h3 style="color: var(--dourado);">Programas de Mentoria para Profissionais</h3>
+                <p>A transmissão do conhecimento científico de forma prática e aplicada é um dos pilares da atuação da Dra. Marcella Rocha. Através de cursos estruturados e mentorias personalizadas, cirurgiões-dentistas recebem direcionamento estratégico e aperfeiçoamento técnico de alto nível, preparando-se para os desafios do mercado clínico contemporâneo.</p>
+                <br>
+                <a href="https://wa.me/5551996602778" target="_blank" class="btn" style="background-color: var(--grafite); box-shadow: none;">Saber Mais sobre Mentorias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria / Consultório -->
+    <section class="section" style="background-color: var(--cinza-claro); max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">O Consultório</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">[ Foto 1 - Recepção Sala 304 ]</div>
+                <div class="gallery-item">[ Foto 2 - Sala de Atendimento ]</div>
+                <div class="gallery-item">[ Foto 3 - Detalhes em Mármore ]</div>
+                <div class="gallery-item">[ Foto 4 - Tecnologia e Conforto ]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section class="section" id="contato">
+        <h2 class="section-title">Agendamentos e Localização</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Entre em Contato</h3>
+                <div class="contact-item">
+                    <span>Endereço</span>
+                    <p>Rua General Osório, 336 — Sala 304<br>Torres/RS — CEP 95560-000</p>
+                </div>
+                <div class="contact-item">
+                    <span>Telefone / WhatsApp</span>
+                    <p>(51) 99660-2778</p>
+                </div>
+                <div class="contact-item">
+                    <span>E-mail</span>
+                    <p>dasilvatochamarcella@gmail.com</p>
+                </div>
+                <br>
+                <a href="https://wa.me/5551996602778" target="_blank" class="btn">Falar no WhatsApp</a>
+            </div>
+            <!-- Espaço para o mapa do Google Maps -->
+            <div class="map-placeholder">
+                <p>[ Mapa Google Maps - Rua General Osório, 336 ]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Dra. Marcella Rocha. Todos os direitos reservados.</p>
+        <p style="font-size: 0.75rem; margin-top: 10px; opacity: 0.5;">CRO/RS 26960</p>
+    </footer>
+
 </body>
 </html>
